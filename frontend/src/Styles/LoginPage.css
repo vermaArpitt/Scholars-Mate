@@ -1,0 +1,22 @@
+.auth-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+  
+.overview {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh; 
+}
+  
+.auth-form {
+    flex: 1;
+    padding: 20px;
+    background-color: #f0f0f0;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); 
+    height: 100vh;
+}
+  

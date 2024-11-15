@@ -4,6 +4,7 @@ import LoginPage from './Pages/LoginPage'
 import RegisterPage from './Pages/RegisterPage'
 import ProtectedRoutes from './Components/ProtectedRoutes'
 import Home from './Pages/Home'
+import './App.css'
 
 function App() {
 
