@@ -2,8 +2,9 @@ import { useState } from "react"
 import api from '../api'
 
 export default function YoutubeForm({addNotes}) {
-    const [title, setTitle] = useState("")
-    const [link, setLink] = useState("")
+    const [isLoading, setIsLoading] = useState(false);
+    const [title, setTitle] = useState("");
+    const [link, setLink] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault()
