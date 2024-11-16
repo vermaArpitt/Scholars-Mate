@@ -4,7 +4,9 @@ from transformers import pipeline
 def YoutubeSummarizer(link):
     video_id = link.split("=")[1]
 
-    transcript_list = YouTubeTranscriptApi.get_transcript(video_id)
+    languages = ['en', 'en-US', 'es', 'fr']
+
+    transcript_list = YouTubeTranscriptApi.get_transcript(video_id, languages=languages)
     transcript = "".join([t['text'] for t in transcript_list])
 
     summarizer = pipeline('summarization',model='t5-base',tokenizer='t5-base',framework='pt')

@@ -6,7 +6,7 @@ import SummarizerForms from "../Components/SummarizerForms"
 import api from "../api"
 
 export default function Home() {
-    const [notesList, setNotesList] = useState([])
+    const [notesList, setNotesList] = useState([]);
 
     useEffect (() => {
         getNotes();
