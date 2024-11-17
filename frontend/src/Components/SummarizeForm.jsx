@@ -58,8 +58,10 @@ export default function SummarizeForm({addNotes, handleLoading}) {
             <br/>
             <input type="text" id="link" value={link} placeholder="Enter Youtube URL" onChange={(e) => setLink(e.target.value)} />
             <br/>
+            <label htmlFor="pdfFile">Upload PDF File</label>
             <input type="file" id="pdfFile" accept=".pdf" onChange={(e) => setPdfFile(e.target.files[0])} />
             <br/>
+            <label htmlFor="audioFile">Upload Audio File</label>
             <input type="file" id="audioFile" accept=".wav, .mp3" onChange={(e) => setAudioFile(e.target.files[0])} />
             <br/>
             <button type="submit" disabled={isLoading}>

@@ -1,7 +1,10 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 from transformers import pipeline
 import pdfplumber
+import whisper
 import os
+
+model = whisper.load_model("base")
 
 def Summarizer(text):
     summarizer = pipeline('summarization',model='t5-base',tokenizer='t5-base',framework='pt')
@@ -15,7 +18,7 @@ def Summarizer(text):
 def YoutubeSummarizer(link):
     video_id = link.split("=")[1]
 
-    languages = ['en', 'en-US', 'es', 'fr']
+    languages = ['en', 'en-US']
 
     transcript_list = YouTubeTranscriptApi.get_transcript(video_id, languages=languages)
     transcript = "".join([t['text'] for t in transcript_list])
@@ -38,4 +41,25 @@ def PDFSummarizer(pdf_file):
     return extracted_text, summarized_text
 
 def AudioSummarizer(audio_file):
-    pass
+    try:
+        if not os.path.exists("temp_uploads"):
+            os.makedirs("temp_uploads")
+
+        file_path = os.path.join("temp_uploads", audio_file.name)
+        with open(file_path, "wb") as f:
+            for chunk in audio_file.chunks():
+                f.write(chunk)
+        
+        result = model.transcribe(file_path)
+        original_text = result["text"]
+        print(f"Original text: {original_text}")
+
+        summarized_text = Summarizer(original_text)
+        print(f"Summary: {summarized_text}")
+        return original_text, summarized_text
+    
+    except Exception as e:
+        raise ValueError(f"Error processing audio file: {e}")
+    finally:
+        if os.path.exists(file_path):
+            os.remove(file_path)
