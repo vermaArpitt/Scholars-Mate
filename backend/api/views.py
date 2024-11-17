@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import generics, status
 from .serializers import UserSerializer, NotesSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .utils import YoutubeSummarizer, PDFSummarizer
+from .utils import YoutubeSummarizer, PDFSummarizer, AudioSummarizer
 
 # Create your views here.
 
@@ -27,7 +27,8 @@ class CreateNotesView(APIView):
     def post(self, request, *args, **kwargs):
         title = request.data.get('title')
         link = request.data.get('link')
-        pdf_file = request.FILES.get('file')
+        pdf_file = request.FILES.get('pdf_file')
+        audio_file = request.FILES.get('audio_file')
 
         if link :
             try:
@@ -40,7 +41,13 @@ class CreateNotesView(APIView):
                 original_text, summarized_text = PDFSummarizer(pdf_file)
             except Exception as e:
                 return Response({"error": f"Error processing PDF File: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
-            
+        
+        elif audio_file:
+            try:
+                original_text, summarized_text = AudioSummarizer(audio_file)
+            except Exception as e:
+                return Response({"error": f"Error processing Audio File: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
+
         else:
             return Response({"error": "Either a YouTube link or a PDF file is required."}, status=status.HTTP_400_BAD_REQUEST)
 

@@ -6,16 +6,17 @@ export default function SummarizeForm({addNotes, handleLoading}) {
     const [title, setTitle] = useState("");
     const [link, setLink] = useState("");
     const [pdfFile, setPdfFile] = useState(null);
+    const [audioFile, setAudioFile] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (link && pdfFile) {
+        if ((link && (pdfFile || audioFile)) || (pdfFile && audioFile)) {
             alert("Please fill out only one field for creating notes.");
             return;
         }
 
-        if (!link && pdfFile) {
+        if (!link && !pdfFile && !audioFile) {
             alert("Enter atleast one field for creating notes.");
             return;
         }
@@ -30,7 +31,9 @@ export default function SummarizeForm({addNotes, handleLoading}) {
             if (link) {
                 formData.append("link", link);
             } else if (pdfFile) {
-                formData.append("file", pdfFile);
+                formData.append("pdf_file", pdfFile);
+            } else if (audioFile) {
+                formData.append("audio_file", audioFile);
             }
 
             const res = await api.post("/api/summarize/", formData);
@@ -42,6 +45,7 @@ export default function SummarizeForm({addNotes, handleLoading}) {
             setTitle("");
             setLink("");
             setPdfFile(null);
+            setAudioFile(null);
             setIsLoading(false);
             handleLoading(false);
         }
@@ -52,9 +56,11 @@ export default function SummarizeForm({addNotes, handleLoading}) {
             <h3>YouTube Transcript Summarizer</h3>
             <input type="text" id="title" value={title} placeholder="Title" required onChange={(e) => setTitle(e.target.value)} />
             <br/>
-            <input type="text" id="link" value={link} placeholder="Enter Youtube URL" required onChange={(e) => setLink(e.target.value)} />
+            <input type="text" id="link" value={link} placeholder="Enter Youtube URL" onChange={(e) => setLink(e.target.value)} />
             <br/>
             <input type="file" id="pdfFile" accept=".pdf" onChange={(e) => setPdfFile(e.target.files[0])} />
+            <br/>
+            <input type="file" id="audioFile" accept=".wav, .mp3" onChange={(e) => setAudioFile(e.target.files[0])} />
             <br/>
             <button type="submit" disabled={isLoading}>
                 {isLoading? "Creating Notes..." : "Create Notes"}
