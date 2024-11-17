@@ -2,8 +2,10 @@ import { useState } from "react"
 import api from "../api"
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import { useNavigate } from "react-router-dom";
+import '../Styles/AuthForm.css';
 
 export default function LoginForm({route, method}) {
+    const formSwitch = method === "login"? "New User? Register Here" : "Already registered? Login Here";
     const formName = method === "login"? "Login" : "Register";
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
@@ -22,6 +24,14 @@ export default function LoginForm({route, method}) {
             }
         } catch (err) {
             alert(err);
+        }
+    }
+
+    const handleSwitch = () => {
+        if (method === "login") {
+            navigate("/register");
+        } else {
+            navigate("/login");
         }
     }
 
@@ -45,6 +55,7 @@ export default function LoginForm({route, method}) {
                 onChange={(e) => {setPassword(e.target.value)}}
             />
             <button type="submit" > {formName} </button>
+            <div className="login-register-switch" onClick={handleSwitch}>{formSwitch}</div>
         </form>
     )
 }

@@ -21,7 +21,7 @@
     color: #fff; /* White text for contrast */
 }
   
-.summarizer-forms {
+.summarizer-panel {
     flex: 2; /* Takes two-thirds of the width */
     padding: 15px;
     height: 100%;

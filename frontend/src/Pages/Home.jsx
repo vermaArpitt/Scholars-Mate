@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Navbar from "../Components/Navbar"
 import '../Styles/Home.css'
 import NotesPanel from "../Components/NotesPanel"
-import SummarizerForms from "../Components/SummarizerForms"
+import SummarizerPanel from "../Components/SummarizerPanel"
 import api from "../api"
 
 export default function Home() {
@@ -26,12 +26,25 @@ export default function Home() {
         getNotes()
     }
 
+    const deleteNotes = async (id) => {
+        try {
+            const res = await api.delete(`/api/notes/delete/${id}/`);
+            if (res.status !== 204) {
+                alert("Failed to Delete Notes :( ");
+            } else {
+                getNotes();
+            }
+        } catch (err) {
+            alert(err);
+        }
+    }
+
     return(
         <div className="home">
             <Navbar />
             <div className="home-container">
-                <NotesPanel notesList={notesList} />
-                <SummarizerForms addNotes={addNotes} />
+                <NotesPanel notesList={notesList} handleDelete={deleteNotes}/>
+                <SummarizerPanel addNotes={addNotes} />
             </div>
         </div>
     )

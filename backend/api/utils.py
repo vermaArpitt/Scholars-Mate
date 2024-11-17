@@ -18,3 +18,6 @@ def YoutubeSummarizer(link):
     summarized_text = "".join(summary_list)
 
     return transcript, summarized_text
+
+def PDFSummarizer(pdf_file):
+    pass

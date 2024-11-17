@@ -1,8 +1,8 @@
 import { useState } from "react";
-import YoutubeForm from "./YoutubeForm"
+import SummarizeForm from "./SummarizeForm";
 import CreatingNotesMessage from "./CreatingNotesMessage";
 
-export default function SummarizerForms({addNotes}) {
+export default function SummarizerPanel({addNotes}) {
     const [creatingNotes, setCreatingNotes] = useState(false);
     
     const handleLoading = (status) => {
@@ -10,8 +10,8 @@ export default function SummarizerForms({addNotes}) {
     }
 
     return(
-        <div className="summarizer-forms">
-            <YoutubeForm addNotes={addNotes} handleLoading={handleLoading} />
+        <div className="summarizer-panel">
+            <SummarizeForm handleLoading={handleLoading} addNotes={addNotes} />
             {creatingNotes && <CreatingNotesMessage />}
         </div>
     )
