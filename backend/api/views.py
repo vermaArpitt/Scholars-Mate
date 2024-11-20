@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from .models import NotesModel
+from .models import NotesModel, QnaModel
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics, status
-from .serializers import UserSerializer, NotesSerializer
+from .serializers import UserSerializer, NotesSerializer, QnaSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .utils import YoutubeSummarizer, PDFSummarizer, AudioSummarizer
 
@@ -73,3 +73,34 @@ class DeleteNotesView(APIView):
         note.delete()
 
         return Response({"message": "Note deleted successfully."}, status=status.HTTP_204_NO_CONTENT)
+    
+class QnaView(APIView):
+    def get(self, request):
+        note_id = request.query_params.get('note')  # Get 'note' parameter from query string
+        if note_id:
+            qna_objects = QnaModel.objects.filter(note_id=note_id)  # Filter by 'note' field
+        else:
+            qna_objects = QnaModel.objects.all()  # Return all entries if no filter is provided
+
+        serializer = QnaSerializer(qna_objects, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request, *args, **kwargs):
+        note_id = request.data.get('note')
+        question_text = request.data.get('question')
+
+        try:
+            note = NotesModel.objects.get(pk=note_id)
+        except NotesModel.DoesNotExist:
+            return Response({"error": "Invalid note ID"}, status=status.HTTP_400_BAD_REQUEST)
+
+        answer_text = "Response"
+
+        qna = QnaModel.objects.create(
+            question_text=question_text,
+            answer_text=answer_text,
+            note=note
+        )
+
+        serializer = QnaSerializer(qna)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

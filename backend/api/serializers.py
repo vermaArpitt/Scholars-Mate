@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import NotesModel
+from .models import NotesModel, QnaModel
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,3 +17,8 @@ class NotesSerializer(serializers.ModelSerializer):
         model = NotesModel
         fields = ["id", "title", "original_text", "summarized_text", "created_at", "author"]
         extra_kwargs = {"author": {"read_only": True}}
+
+class QnaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QnaModel
+        fields = '__all__'

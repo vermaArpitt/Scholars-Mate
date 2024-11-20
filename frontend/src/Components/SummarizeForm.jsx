@@ -37,7 +37,7 @@ export default function SummarizeForm({addNotes, handleLoading}) {
             }
 
             const res = await api.post("/api/summarize/", formData);
-            addNotes(res.data);
+            addNotes();
 
         } catch (err) {
             alert(err);

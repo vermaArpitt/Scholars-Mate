@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import SummarizeForm from "./SummarizeForm";
 import CreatingNotesMessage from "./CreatingNotesMessage";
+import RecordingMessage from "./RecordingMessage";
 
 export default function SummarizerPanel({addNotes}) {
     const [creatingNotes, setCreatingNotes] = useState(false);
@@ -79,6 +80,7 @@ export default function SummarizerPanel({addNotes}) {
                 </button>
             </div>
             {creatingNotes && <CreatingNotesMessage />}
+            {isRecording && <RecordingMessage />}
         </div>
     )
 }

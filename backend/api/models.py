@@ -12,3 +12,10 @@ class NotesModel(models.Model):
 
     def __str__(self):
         return self.title
+    
+class QnaModel(models.Model):
+    context = models.TextField()
+    question_text = models.TextField()
+    answer_text = models.TextField(blank=True, null=True)
+    note = models.ForeignKey(NotesModel, on_delete=models.CASCADE, related_name="qna")
+    created_at = models.DateTimeField(auto_now_add=True)

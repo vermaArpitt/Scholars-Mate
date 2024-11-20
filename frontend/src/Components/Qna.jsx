@@ -1,17 +1,8 @@
-import { useState } from "react"
-
-export default function Qna() {
-    const [question, setQuestion] = useState("");
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-    }
+export default function Qna({ qna }) {
     return(
-        <div className="qna-container">
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={question} onChange={(e) => setQuestion(e.target.value)} />
-            </form>
+        <div className="qna-item">
+            <p>{qna.question_text}</p>
+            <p>{qna.answer_text}</p>
         </div>
     )
 }
