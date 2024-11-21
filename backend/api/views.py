@@ -7,6 +7,8 @@ from rest_framework import generics, status
 from .serializers import UserSerializer, NotesSerializer, QnaSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .utils import YoutubeSummarizer, PDFSummarizer, AudioSummarizer
+from .rag.create_database import create_database
+from .rag.query_rag import query_rag
 
 # Create your views here.
 
@@ -90,12 +92,14 @@ class QnaView(APIView):
         note_id = request.data.get('note')
         question_text = request.data.get('question')
 
+        create_database(note_id, context)
+
         try:
             note = NotesModel.objects.get(pk=note_id)
         except NotesModel.DoesNotExist:
             return Response({"error": "Invalid note ID"}, status=status.HTTP_400_BAD_REQUEST)
 
-        answer_text = "Response"
+        answer_text = query_rag(question_text)
 
         qna = QnaModel.objects.create(
             context=context,

@@ -2,5 +2,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 5%;
+    padding-top: 2.5%;
+    margin: 0;
+    font-family: "Lato", sans-serif;
+}
+
+.summarize-form{
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 20px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
