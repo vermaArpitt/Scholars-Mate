@@ -3,7 +3,7 @@ import '../Styles/Qna.css';
 import api from '../api';
 import Qna from "./QnA";
 
-export default function QnaList({notes_id}) {
+export default function QnaList({context, notes_id}) {
     const [qnaList, setQnaList] = useState([]);
     const [question, setQuestion] = useState("");
 
@@ -16,11 +16,12 @@ export default function QnaList({notes_id}) {
         }
 
         try{
-            await api.post('qna/', {note: notes_id, question: question})
+            await api.post('qna/', {context: context, note: notes_id, question: question})
         } catch (err) {
             alert(err);
         } finally {
             getQnaList();
+            setQuestion("");
         }
     };
 

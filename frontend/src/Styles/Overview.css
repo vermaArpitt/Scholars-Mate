@@ -1,0 +1,27 @@
+.overview h1{
+    font-size: 70px;
+    font-family: "Graduate", serif;
+    letter-spacing: 3px;
+    cursor: default;
+    margin-bottom: 10px;
+}
+
+.overview h2{
+    font-size: 25px;
+    font-family: "Graduate", serif;
+    letter-spacing: 3px;
+    cursor: default;
+    margin-bottom: 10%;
+}
+
+.overview p{
+    color: rgb(203, 203, 203);
+    margin: 10px;
+    padding-right: 10px;
+    font-family: sans-serif;
+    font-size: 21px;
+    letter-spacing: 2px;
+    text-align: justify;
+    line-height: 1.6;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3), -2px -2px 4px rgba(255, 255, 255, 0.3);
+}

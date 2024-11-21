@@ -52,10 +52,9 @@ export default function SummarizeForm({addNotes, handleLoading}) {
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <h3>YouTube Transcript Summarizer</h3>
+        <form className="summarize-form" onSubmit={handleSubmit}>
             <input type="text" id="title" value={title} placeholder="Title" required onChange={(e) => setTitle(e.target.value)} />
-            <br/>
+            <br/><br/>
             <input type="text" id="link" value={link} placeholder="Enter Youtube URL" onChange={(e) => setLink(e.target.value)} />
             <br/>
             <label htmlFor="pdfFile">Upload PDF File</label>

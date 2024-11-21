@@ -1,4 +1,51 @@
+.auth-form{
+    font-family: "Lato", sans-serif;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10%;
+    gap: 40px;
+    width: 70%;
+    height: fit-content;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.auth-form-container h1{
+    font-size: 45px;
+    margin: 0;
+}
+
+.auth-form-container input{
+    width: 80%;
+    height: 40px;
+    padding: 20px;
+}
+
+.auth-form-container button{
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+    background-color: #009b5b;
+    color: white;
+    width: 70%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.auth-form-container button:hover{
+    background-color: #228d60;
+}
+
 .login-register-switch{
     cursor: pointer;
     text-decoration: underline;
+}
+
+
+.login-register-switch:hover{
+    color: #39d393;
 }

@@ -1,0 +1,51 @@
+.notes-panel{
+    font-family: "Inter", sans-serif;
+}
+
+.notes-panel h2{
+    margin: 10px 22px;
+}
+
+.notes-container{
+    cursor: default;
+    width: 100%;
+    border-radius: 30px;
+    padding: 15px 30px;
+}
+
+.notes-container:hover{
+    background-color: #292929;
+}
+
+.notes-title{
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0;
+}
+
+.notes-title:hover{
+    text-decoration: underline;
+}
+
+.created-at{
+    color: rgb(203, 203, 203);
+    font-family: monospace;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.delete-notes{
+    cursor: pointer;
+    background-color: rgb(71, 71, 71);
+    border-radius: 10px;
+    border: none;
+    padding: 8px;
+    color: rgb(213, 213, 213);
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+}
+
+.delete-notes:hover{
+    background-color: rgb(64, 64, 64);
+}

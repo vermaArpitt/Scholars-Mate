@@ -52,10 +52,10 @@ def AudioSummarizer(audio_file):
         
         result = model.transcribe(file_path)
         original_text = result["text"]
-        print(f"Original text: {original_text}")
+        # print(f"Original text: {original_text}")
 
         summarized_text = Summarizer(original_text)
-        print(f"Summary: {summarized_text}")
+        # print(f"Summary: {summarized_text}")
         return original_text, summarized_text
     
     except Exception as e:

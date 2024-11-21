@@ -3,24 +3,29 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #2d3e50; 
+    background-color: #371f5b; 
     color: white;
+    height: 10%;
 }
 
-.name {
-    font-size: 24px;
+.navbar .name {
+    font-family: "Graduate", serif;
+    font-size: 38px;
     font-weight: bold;
+    cursor: default;
 }
 
 .logout-button {
-    background-color: #f04e30;
+    background-color: #009b5b;
     color: white;
     padding: 8px 16px;
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 20px;
     transition: background-color 0.3s ease;
+    height: 80%;
+    width: 10%;
 }
 
 .logout-button:hover {

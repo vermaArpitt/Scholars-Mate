@@ -36,26 +36,28 @@ export default function LoginForm({route, method}) {
     }
 
     return(
-        <form className="auth-form" onSubmit={handleSubmit}>
-            <h1> {formName} </h1>
-            <input 
-                type="text" 
-                className="form-input" 
-                value={username} 
-                placeholder="Username" 
-                required 
-                onChange={(e) => {setUsername(e.target.value)}}
-            />
-            <input 
-                type="password" 
-                className="form-input" 
-                value={password} 
-                placeholder="Password" 
-                required 
-                onChange={(e) => {setPassword(e.target.value)}}
-            />
-            <button type="submit" > {formName} </button>
-            <div className="login-register-switch" onClick={handleSwitch}>{formSwitch}</div>
-        </form>
+        <div className="auth-form-container">
+            <form className="auth-form" onSubmit={handleSubmit}>
+                <h1> {formName} </h1>
+                <input 
+                    type="text" 
+                    className="form-input" 
+                    value={username} 
+                    placeholder="Username" 
+                    required 
+                    onChange={(e) => {setUsername(e.target.value)}}
+                />
+                <input 
+                    type="password" 
+                    className="form-input" 
+                    value={password} 
+                    placeholder="Password" 
+                    required 
+                    onChange={(e) => {setPassword(e.target.value)}}
+                />
+                <button type="submit"> {formName} </button>
+                <div className="login-register-switch" onClick={handleSwitch}>{formSwitch}</div>
+            </form>
+        </div>
     )
 }

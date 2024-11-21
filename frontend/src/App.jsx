@@ -30,7 +30,10 @@ function App() {
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/register" element={<LogoutAndRegister/>} />
         <Route path="/logout" element={<Logout/>} />
-        <Route path='/notes/:id/' element={<NotesPage/>} />
+        <Route path='/notes/:id/' element={
+          <ProtectedRoutes>
+            <NotesPage/>
+         </ProtectedRoutes>} />
       </Routes>
     </BrowserRouter>
   )

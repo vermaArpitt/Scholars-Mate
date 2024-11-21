@@ -9,7 +9,7 @@ export default function Navbar() {
     }
     return(
         <nav className="navbar">
-            <div className="name">Scholars' Mate</div>
+            <div className="name"> scholars' mate </div>
             <button className="logout-button" onClick={handleLogout}>Logout</button>
         </nav>
     )

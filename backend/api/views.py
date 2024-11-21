@@ -86,6 +86,7 @@ class QnaView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
+        context = request.data.get('context')
         note_id = request.data.get('note')
         question_text = request.data.get('question')
 
@@ -97,6 +98,7 @@ class QnaView(APIView):
         answer_text = "Response"
 
         qna = QnaModel.objects.create(
+            context=context,
             question_text=question_text,
             answer_text=answer_text,
             note=note

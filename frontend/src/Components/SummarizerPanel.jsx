@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import SummarizeForm from "./SummarizeForm";
 import CreatingNotesMessage from "./CreatingNotesMessage";
 import RecordingMessage from "./RecordingMessage";
+import '../Styles/SummarizerPanel.css';
 
 export default function SummarizerPanel({addNotes}) {
     const [creatingNotes, setCreatingNotes] = useState(false);
@@ -73,6 +74,7 @@ export default function SummarizerPanel({addNotes}) {
 
     return(
         <div className="summarizer-panel">
+            <h1>What knowledge are you seeking today?</h1>
             <SummarizeForm handleLoading={handleLoading} addNotes={addNotes} />
             <div>
                 <button onClick={handleRecording}>

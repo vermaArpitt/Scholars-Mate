@@ -13,7 +13,7 @@ export default function NotesPage() {
         <Navbar />
         <div className="notes-page-container">
             <Summary summarized_text={notes.summarized_text} />
-            <QnaList notes_id={notes.id} />
+            <QnaList context={notes.original_text} notes_id={notes.id} />
         </div>
         </>
     )

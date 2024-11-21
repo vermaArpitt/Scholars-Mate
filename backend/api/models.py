@@ -14,7 +14,7 @@ class NotesModel(models.Model):
         return self.title
     
 class QnaModel(models.Model):
-    context = models.TextField()
+    context = models.TextField(null=True, blank=True)
     question_text = models.TextField()
     answer_text = models.TextField(blank=True, null=True)
     note = models.ForeignKey(NotesModel, on_delete=models.CASCADE, related_name="qna")

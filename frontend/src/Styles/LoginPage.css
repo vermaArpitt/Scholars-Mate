@@ -10,13 +10,17 @@
     padding: 20px;
     overflow-y: auto;
     height: 100vh; 
+    background-color: black;
+    color: white;
 }
   
-.auth-form {
+.auth-form-container {
     flex: 1;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #371f5b;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); 
     height: 100vh;
+    display: flex;
+    justify-content: center;
 }
   
